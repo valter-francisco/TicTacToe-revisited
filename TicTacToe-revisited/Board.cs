@@ -6,31 +6,36 @@ namespace TicTacToe_revisited
 {
     public class Board
     {
-        public int Line;
-        public int Collumn;
+        public int line { get; set; }
+        public int collumn { get; set; }
 
-        private string[,] board;// = new string[5, 5];
-
-        public static void DrawBoard (string[,] board, int line, int collumn)
+        public string[,] board = new string[3, 3]
         {
-            board = new string[5, 5];
+            {" "," "," "},
+            {" "," "," "},
+            {" "," "," "},
+        };
 
-            for (line = 0; line < 5; line++)
-            {
-                for (collumn = 0; collumn < 5; collumn++)
-                {
-                    if (line % 2 != 0)
-                    {
-                        board[line,collumn] = "---";
-                    }
-                    else if (collumn % 2 != 0)
-                    {
-                        board[line, collumn] = " | ";
-                    }
-                    Console.Write(board[line,collumn]);
-                }
-                Console.WriteLine();
-            }
+        public void SetX(string[,] board, int line, int collumn)
+        {
+            board[line, collumn] = "X";
+        }
+
+        public void SetO(string[,] board, int line, int collumn)
+        {
+            board[line, collumn] = "O";
+        }
+
+        public void DrawBoard (string[,] board)
+        {
+            Console.WriteLine("    C o l u m n s");
+            Console.WriteLine("    | 1 | 2 | 3 ");
+            Console.WriteLine("  ---------------");
+            Console.WriteLine("L 1 | {0} | {1} | {2}", board[0, 0], board[0, 1], board[0, 2]);
+            Console.WriteLine("i ---------------");
+            Console.WriteLine("n 2 | {0} | {1} | {2}", board[1, 0], board[1, 1], board[1, 2]);
+            Console.WriteLine("e ---------------");
+            Console.WriteLine("s 3 | {0} | {1} | {2}", board[2, 0], board[2, 1], board[2, 2]);
         }
     }
 }
